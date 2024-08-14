@@ -9,6 +9,7 @@
 // @match        http://sigeduca.seduc.mt.gov.br/ged/hwgedteladocumento.aspx?0,34
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=gov.br
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/lksoumon/AnaliseDiariosSigeduca/main/ConferidorDiariosClasse.js
 // ==/UserScript==
 
 window.print = function() {};
