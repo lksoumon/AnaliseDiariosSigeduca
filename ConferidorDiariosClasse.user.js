@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Conferidor de Diários de Classe
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Analisa os diários de classe
 // @author       Lucas Monteiro
 // @run-at       document-end
@@ -225,7 +225,9 @@ function ultimoElementoTDPrimeiroTR(tabela) {
 }
 function formatarData(ano, dataString) {
     // Extrai o dia e o mês da string fornecida
-    var partes = dataString.split(' ');
+    //console.log(dataString);
+    var partes = dataString.split('\n');
+    //console.log(partes);
     var dia = parseInt(partes[0]);
     var mes = parseInt(partes[1]);
 
@@ -415,9 +417,9 @@ function recortarString(strPrincipal, strInicio, strFinal) {
                          if(i == 1 ){
                              var dias = linhas[i].getElementsByTagName("td");
                              for(var j = 0; j < dias.length; j++){
-                                 var dataFormatada = formatarData(ANO, dias[j].getElementsByTagName("span")[0].textContent.trim());
+                                 var dataFormatada = formatarData(ANO, dias[j].getElementsByTagName("span")[0].innerText.trim());
                                  datas.push(dataFormatada);
-                                 //console.log(dataFormatada);
+                                 //console.log(dias[j].getElementsByTagName("span")[0]);
                              }
                              output.diasLan = datas;
                              continue;
@@ -565,7 +567,7 @@ function analise(turmalina,aulaSemana){
 
         });
 
-
+    console.log(diasLan);
         if(verificarPorDia == 1){
 
             let counts = {};
